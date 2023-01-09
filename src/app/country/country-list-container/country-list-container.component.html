@@ -1,1 +1,4 @@
-<app-country-list-presentation></app-country-list-presentation>
+<app-country-list-presentation
+    [countries]="getData$ | async"
+    (emitCountry)="emitCountry($event)"
+></app-country-list-presentation>

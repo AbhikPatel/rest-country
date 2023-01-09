@@ -1,1 +1,28 @@
-<p>country-list-presentation works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-3 p-4" *ngFor="let data of countries">
+            <div class="card shadow" role="button" (click)="onCard(data.name)">
+                <figure class="shadow-sm">
+                    <img [src]="data.flags.png" alt="flag" class="card-img" style="height: 200px;">
+                </figure>
+                <div class="card-body">
+                    <div class="fw-bolder fs-5 text-truncate"> {{data.name}} </div>
+                    <div class="card-text pt-3">
+                        <div>
+                            <span class="fw-bold"> Population: </span>
+                            <span> {{data.population}} </span>
+                        </div>
+                        <div>
+                            <span class="fw-bold"> Region: </span>
+                            <span> {{data.region}} </span>
+                        </div>
+                        <div>
+                            <span class="fw-bold"> Capital: </span>
+                            <span> {{data.capital}} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

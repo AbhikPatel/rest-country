@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CountryDetailsPresenterService } from '../country-details-presenter/country-details-presenter.service';
 
 @Component({
@@ -8,6 +8,16 @@ import { CountryDetailsPresenterService } from '../country-details-presenter/cou
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class CountryDetailsPresentationComponent implements OnInit {
+  
+  @Input() public set country(v : any) {
+    this._country = v;
+  }
+
+  public get country() : any {
+    return this._country;
+  }
+  
+  private _country : any;
 
   constructor(
     private _service:CountryDetailsPresenterService

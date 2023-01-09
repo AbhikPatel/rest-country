@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { GetDataService } from '../get-data.service';
 
 @Component({
@@ -9,11 +11,22 @@ import { GetDataService } from '../get-data.service';
 })
 export class CountryListContainerComponent implements OnInit {
 
+  public getData$:Observable<any>;
+
   constructor(
-    private _service:GetDataService
-  ) { }
+    private _service:GetDataService,
+    private _route:Router
+  ) { 
+    this.getData$ = new Observable();
+  }
 
   ngOnInit(): void {
+    this.getData$ = this._service.getCountries()
+  }
+
+  public emitCountry(data:string){
+    this._service.countryName.next(data)
+    this._route.navigateByUrl('/details')
   }
 
 }

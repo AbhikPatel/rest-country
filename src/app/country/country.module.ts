@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CountryDetailsContainerComponent } from './country-details-container/country-details-container.component';
 import { CountryListContainerComponent } from './country-list-container/country-list-container.component';
@@ -10,15 +11,15 @@ import { CountryListPresentationComponent } from './country-list-container/count
 
 @NgModule({
   declarations: [
-  
     CountryListContainerComponent,
-       CountryDetailsContainerComponent,
-       CountryDetailsPresentationComponent,
-       CountryListPresentationComponent
+    CountryDetailsContainerComponent,
+    CountryDetailsPresentationComponent,
+    CountryListPresentationComponent
   ],
   imports: [
     CommonModule,
-    CountryRoutingModule
+    CountryRoutingModule,
+    HttpClientModule
   ]
 })
 export class CountryModule { }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { GetDataService } from '../get-data.service';
 
 @Component({
@@ -9,11 +10,16 @@ import { GetDataService } from '../get-data.service';
 })
 export class CountryDetailsContainerComponent implements OnInit {
 
+  public getCountryData$:Observable<any>;
+
   constructor(
     private _service:GetDataService
-  ) { }
+  ) { 
+    this.getCountryData$ = new Observable();
+  }
 
   ngOnInit(): void {
+    this._service.countryName.asObservable().subscribe((data) => console.log(data))
   }
 
 }
