@@ -19,7 +19,7 @@ export class CountryDetailsContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._service.countryName.asObservable().subscribe((data) => console.log(data))
+    this.getCountryData$ = this._service.getCountry('Argentina')
   }
 
 }

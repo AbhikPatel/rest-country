@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -8,13 +8,11 @@ import { environment } from 'src/environments/environment';
 export class GetDataService {
 
   public api:string;
-  public countryName:BehaviorSubject<any>;
 
   constructor(
     private _http:HttpClient
   ) {
-    this.api = environment.baseURL
-    this.countryName = new BehaviorSubject('');
+    this.api = environment.baseURL;
   }
 
   public getCountries():Observable<any>{

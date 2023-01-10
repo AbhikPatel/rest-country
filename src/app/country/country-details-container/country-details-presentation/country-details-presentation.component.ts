@@ -9,19 +9,21 @@ import { CountryDetailsPresenterService } from '../country-details-presenter/cou
 })
 export class CountryDetailsPresentationComponent implements OnInit {
   
-  @Input() public set country(v : any) {
+  @Input() public set country(v : any[]) {
     this._country = v;
   }
 
-  public get country() : any {
+  public get country() : any[] {
     return this._country;
   }
   
-  private _country : any;
+  private _country : any[];
 
   constructor(
     private _service:CountryDetailsPresenterService
-  ) { }
+  ) { 
+    this._country = [];
+  }
 
   ngOnInit(): void {
   }

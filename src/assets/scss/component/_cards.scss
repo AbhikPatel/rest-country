@@ -1,0 +1,21 @@
+.select{
+
+    width: 200px;
+
+    &-container{
+        z-index: 1;
+        top: 105%;
+    }
+
+    &-option{
+        background-color: $white;
+        &:hover{
+            background-color: #e7e7e7;
+        }
+    }
+
+    &-arrow{
+        top: 10px;
+        right: 0;
+    }
+}

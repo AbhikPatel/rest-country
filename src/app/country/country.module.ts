@@ -7,6 +7,9 @@ import { CountryListContainerComponent } from './country-list-container/country-
 import { CountryRoutingModule } from './country-routing.module';
 import { CountryDetailsPresentationComponent } from './country-details-container/country-details-presentation/country-details-presentation.component';
 import { CountryListPresentationComponent } from './country-list-container/country-list-presentation/country-list-presentation.component';
+import { GetDataService } from './get-data.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -14,12 +17,18 @@ import { CountryListPresentationComponent } from './country-list-container/count
     CountryListContainerComponent,
     CountryDetailsContainerComponent,
     CountryDetailsPresentationComponent,
-    CountryListPresentationComponent
+    CountryListPresentationComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     CountryRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
+  providers:[
+    GetDataService
   ]
 })
 export class CountryModule { }

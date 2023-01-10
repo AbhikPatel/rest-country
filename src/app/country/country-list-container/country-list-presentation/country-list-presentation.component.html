@@ -1,22 +1,48 @@
+<!-- Start: Container Section  -->
 <div class="container">
+
+    <!-- Start: Functionality Section -->
+    <div class="d-flex p-2 justify-content-between flex-lg-row flex-column align-items-lg-center">
+
+        <!-- Search Functionality  -->
+        <div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class='bx bx-search-alt-2 fs-5'></i></span>
+                <input type="text" class="form-control" placeholder="Search for a country..." aria-label="Username"
+                    aria-describedby="basic-addon1" autocomplete="off" [(ngModel)]="searchText">
+            </div>
+        </div>
+
+        <!-- Filter Functionality -->
+        <div class="select position-relative">
+            <div class="select-current p-3 bg-white rounded-2 shadow" role="button" (click)="onOpen()"> {{placeholder}} </div>
+            <span class="position-absolute select-arrow fs-3 text-muted"> <i class='bx bx-chevron-down'></i> </span>
+            <div class="select-container rounded-2 position-absolute overflow-hidden w-100 shadow" [ngClass]="selectDropDown ? 'd-block' : 'd-none'">
+                <div class="select-option py-1 px-3" role="button" (click)="onRegion(data)" *ngFor="let data of regionName"> {{data}} </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Functionality Section -->
     <div class="row">
-        <div class="col-3 p-4" *ngFor="let data of countries">
+
+        <!-- Start: Card Section  -->
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 p-lg-4 p-2" *ngFor="let data of updatedData | search:searchText">
             <div class="card shadow" role="button" (click)="onCard(data.name)">
                 <figure class="shadow-sm">
-                    <img [src]="data.flags.png" alt="flag" class="card-img" style="height: 200px;">
+                    <img [src]="data.flags.png" alt="flag" class="card-img">
                 </figure>
                 <div class="card-body">
                     <div class="fw-bolder fs-5 text-truncate"> {{data.name}} </div>
                     <div class="card-text pt-3">
-                        <div>
+                        <div class="py-1">
                             <span class="fw-bold"> Population: </span>
                             <span> {{data.population}} </span>
                         </div>
-                        <div>
+                        <div class="py-1">
                             <span class="fw-bold"> Region: </span>
                             <span> {{data.region}} </span>
                         </div>
-                        <div>
+                        <div class="py-1">
                             <span class="fw-bold"> Capital: </span>
                             <span> {{data.capital}} </span>
                         </div>
@@ -24,5 +50,12 @@
                 </div>
             </div>
         </div>
+        <!-- End: Card Section  -->
+
+        <!-- No Data Found  -->
+        <div class="text-center" *ngIf="updatedData.length === 0">
+            <span class="text-muted"> No Data Found </span>
+        </div>
     </div>
 </div>
+<!-- End: Container Section  -->

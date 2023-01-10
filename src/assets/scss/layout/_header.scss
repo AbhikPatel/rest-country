@@ -1,8 +1,41 @@
-#header{
+.header {
     flex: 0 0 80px;
     z-index: 10;
 }
 
-#content{
+.content {
     background-color: #f1f1f1;
+
+    .card {
+        background-color: white;
+        transition: 0.6s all;
+
+        &:hover{
+            transform: scale();
+        }   
+
+        &-img{
+            height: 200px;
+        }
+    }
+}
+
+#dark-mode:checked {
+    &~.content {
+        background-color: #1f2d36;
+        
+        .card{
+            background-color: #2b3742;
+            color: white;
+
+            &-text{
+                color: #e6e6e6;
+            }
+        }
+    }
+
+    &+.header {
+        background-color: #2b3742;
+        color: white;
+    }
 }

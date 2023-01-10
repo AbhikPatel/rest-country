@@ -1,8 +1,18 @@
-<div class="h-100 d-flex flex-column overflow-hidden">
-    <div id="header" class="shadow">
+<!-- Start: Wrapper Section  -->
+<div class="h-100 d-flex flex-column overflow-hidden user-select-none">
+    <!-- <label for="dark-mode">
+        <span class="fs-5" role="button"> <i class='bx bx-moon pe-2'></i> Dark Mode </span>
+    </label> -->
+    <input type="checkbox" name="dark-mode" id="dark-mode" class="d-none">
+
+    <!-- Header  -->
+    <div class="header shadow">
         <app-header></app-header>
     </div>
-    <div id="content" class="flex-grow-1 p-5 overflow-auto">
+
+    <!-- Router  -->
+    <div class="content flex-grow-1 py-5 px-4 px-sm-0 overflow-auto">
         <router-outlet></router-outlet>
     </div>
 </div>
+<!-- End: Wrapper Section  -->

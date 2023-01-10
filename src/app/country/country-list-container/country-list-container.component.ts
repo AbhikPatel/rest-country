@@ -25,8 +25,7 @@ export class CountryListContainerComponent implements OnInit {
   }
 
   public emitCountry(data:string){
-    this._service.countryName.next(data)
-    this._route.navigateByUrl('/details')
+    this._route.navigateByUrl('/country/country-details')
   }
 
 }
