@@ -12,7 +12,7 @@ export class GetDataService {
   constructor(
     private _http:HttpClient
   ) {
-    this.api = environment.baseURL;
+    this.api = 'https://restcountries.com/v2';
   }
 
   public getCountries():Observable<any>{
