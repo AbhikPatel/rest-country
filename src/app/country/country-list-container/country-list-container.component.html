@@ -1,4 +1,5 @@
-<app-country-list-presentation
-    [countries]="getData$ | async"
+<app-country-list-presentation 
+    [countries]="getData$ | async" 
     (emitCountry)="emitCountry($event)"
+    [toggleMode]="getDarkMode$|async"
 ></app-country-list-presentation>

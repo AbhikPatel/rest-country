@@ -2,23 +2,20 @@
 <div class="container">
 
     <!-- Start: Functionality Section -->
-    <div class="d-flex p-2 justify-content-between flex-lg-row flex-column align-items-lg-center">
+    <div class="d-flex p-2 justify-content-lg-between justify-content-center flex-lg-row flex-column align-items-lg-center">
 
         <!-- Search Functionality  -->
-        <div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class='bx bx-search-alt-2 fs-5'></i></span>
-                <input type="text" class="form-control" placeholder="Search for a country..." aria-label="Username"
-                    aria-describedby="basic-addon1" autocomplete="off" [(ngModel)]="searchText">
-            </div>
+        <div class="d-flex rounded-2 p-3" [ngClass]="toggleMode ? 'header-dark text-white' : 'bg-white'">
+            <i class='bx bx-search-alt-2 fs-5 pe-3'></i>
+            <input type="text" id="search"  placeholder="Search for a country..." autocomplete="off" [ngClass]="{'text-white' : toggleMode}" [(ngModel)]="searchText">
         </div>
 
         <!-- Filter Functionality -->
-        <div class="select position-relative">
-            <div class="select-current p-3 bg-white rounded-2 shadow" role="button" (click)="onOpen()"> {{placeholder}} </div>
+        <div class="select position-relative mt-3 mt-lg-0">
+            <div class="select-current p-3 rounded-2 shadow" role="button" (click)="onOpen()" [ngClass]="toggleMode ? 'header-dark text-white' : 'bg-white'"> {{placeholder}} </div>
             <span class="position-absolute select-arrow fs-3 text-muted"> <i class='bx bx-chevron-down'></i> </span>
             <div class="select-container rounded-2 position-absolute overflow-hidden w-100 shadow" [ngClass]="selectDropDown ? 'd-block' : 'd-none'">
-                <div class="select-option py-1 px-3" role="button" (click)="onRegion(data)" *ngFor="let data of regionName"> {{data}} </div>
+                <div class="select-option py-1 px-3" role="button" (click)="onRegion(data)" [ngClass]="toggleMode ? 'header-dark text-white' : 'bg-white'" *ngFor="let data of regionName"> {{data}} </div>
             </div>
         </div>
     </div>
@@ -27,7 +24,7 @@
 
         <!-- Start: Card Section  -->
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3 p-lg-4 p-2" *ngFor="let data of updatedData | search:searchText">
-            <div class="card shadow" role="button" (click)="onCard(data.name)">
+            <div class="card shadow" role="button" (click)="onCard(data.name)" [ngClass]="toggleMode ? 'header-dark text-white' : 'bg-white'">
                 <figure class="shadow-sm">
                     <img [src]="data.flags.png" alt="flag" class="card-img">
                 </figure>
@@ -53,7 +50,7 @@
         <!-- End: Card Section  -->
 
         <!-- No Data Found  -->
-        <div class="text-center" *ngIf="updatedData.length === 0">
+        <div class="text-center" *ngIf="updatedData?.length === 0">
             <span class="text-muted"> No Data Found </span>
         </div>
     </div>

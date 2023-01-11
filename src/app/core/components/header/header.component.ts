@@ -7,14 +7,19 @@ import { GetDataService } from 'src/app/country/get-data.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public toggleDark:boolean = false;
+
   constructor(
     private _service:GetDataService
-  ) { }
+  ) { 
+    this._service.darkMode.subscribe((data) => this.toggleDark = data)
+  }
 
   ngOnInit(): void {
   }
 
   public onDark(){
+    this.toggleDark ? this._service.darkMode.next(false) : this._service.darkMode.next(true);
   }
 
 }

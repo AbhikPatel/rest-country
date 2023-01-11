@@ -1,17 +1,13 @@
 <!-- Start: Wrapper Section  -->
 <div class="h-100 d-flex flex-column overflow-hidden user-select-none">
-    <!-- <label for="dark-mode">
-        <span class="fs-5" role="button"> <i class='bx bx-moon pe-2'></i> Dark Mode </span>
-    </label> -->
-    <input type="checkbox" name="dark-mode" id="dark-mode" class="d-none">
 
     <!-- Header  -->
-    <div class="header shadow">
+    <div class="header shadow" [ngClass]="toggleDark ? 'header-dark text-white' : 'bg-white'">
         <app-header></app-header>
     </div>
 
     <!-- Router  -->
-    <div class="content flex-grow-1 py-5 px-4 px-sm-0 overflow-auto">
+    <div class="flex-grow-1 py-5 px-4 px-sm-0 overflow-auto" [ngClass]="toggleDark ? 'content-dark' : 'content'">
         <router-outlet></router-outlet>
     </div>
 </div>

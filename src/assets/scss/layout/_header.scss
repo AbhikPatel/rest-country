@@ -3,39 +3,14 @@
     z-index: 10;
 }
 
-.content {
-    background-color: #f1f1f1;
-
-    .card {
-        background-color: white;
-        transition: 0.6s all;
-
-        &:hover{
-            transform: scale();
-        }   
-
-        &-img{
-            height: 200px;
-        }
-    }
+.header-dark {
+    background-color: #2b3945;
 }
 
-#dark-mode:checked {
-    &~.content {
-        background-color: #1f2d36;
-        
-        .card{
-            background-color: #2b3742;
-            color: white;
+.content-dark {
+    background-color: #1f2d36;
+}
 
-            &-text{
-                color: #e6e6e6;
-            }
-        }
-    }
-
-    &+.header {
-        background-color: #2b3742;
-        color: white;
-    }
+.content {
+    background-color: #f1f1f1;
 }

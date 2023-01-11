@@ -4,8 +4,8 @@ import { CountryListPresenterService } from '../country-list-presenter/country-l
 @Component({
   selector: 'app-country-list-presentation',
   templateUrl: './country-list-presentation.component.html',
-  viewProviders: [CountryListPresenterService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  viewProviders:[CountryListPresenterService],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class CountryListPresentationComponent implements OnInit {
 
@@ -18,8 +18,17 @@ export class CountryListPresentationComponent implements OnInit {
     return this._countries;
   }
 
+  @Input() public set toggleMode(v: any) {
+    this._toggleMode = v;
+  }
+
+  public get toggleMode(): any {
+    return this._toggleMode;
+  }
+
   @Output() public emitCountry: EventEmitter<string>;
 
+  private _toggleMode: boolean;
   private _countries: any;
   public updatedData: any;
   public searchText: string;
@@ -28,13 +37,14 @@ export class CountryListPresentationComponent implements OnInit {
   public placeholder: string;
 
   constructor(
-    private _service: CountryListPresenterService
+    private _service: CountryListPresenterService,
   ) {
     this.emitCountry = new EventEmitter();
     this.searchText = '';
+    this._toggleMode = false;
     this.selectDropDown = false
     this.regionName = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'All'];
-    this.placeholder = 'Filter by Region'
+    this.placeholder = 'Filter by Region';
   }
 
   ngOnInit(): void {

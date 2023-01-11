@@ -2,7 +2,7 @@
 <div class="container h-100">
 
     <!-- Back Button  -->
-    <span class="back-btn py-2 px-5 rounded-2 bg-white" role="button" routerLink="/"> <i class='bx bx-arrow-back'></i>
+    <span class="py-2 px-5 rounded-2" role="button" routerLink="/" [ngClass]="toggleMode ? 'header-dark text-white shadow' : 'bg-white back-btn'"> <i class='bx bx-arrow-back'></i>
         Back </span>
 
     <!-- Start: Details Section  -->
@@ -17,46 +17,46 @@
             </div>
 
             <!-- Coutry Details  -->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6" [ngClass]="{'text-white' : toggleMode}">
                 <div class="d-flex justify-content-center flex-column p-xl-5 py-5 h-100">
                     <div class="text-start">
-                        <h2 class="fw-bolder"> {{country[0].name}} </h2>
+                        <h2 class="fw-bolder"> {{country[0]?.name}} </h2>
                     </div>
                     <div class="row pt-5">
                         <div class="col-12 col-xl-6">
                             <div class="py-1">
                                 <span class="fw-bold"> Native Name: </span>
-                                <span> {{country[0].nativeName}} </span>
+                                <span> {{country[0]?.nativeName}} </span>
                             </div>
                             <div class="py-1">
                                 <span class="fw-bold"> Population: </span>
-                                <span> {{country[0].population}} </span>
+                                <span> {{country[0]?.population}} </span>
                             </div>
                             <div class="py-1">
                                 <span class="fw-bold"> Region: </span>
-                                <span> {{country[0].region}} </span>
+                                <span> {{country[0]?.region}} </span>
                             </div>
                             <div class="py-1">
                                 <span class="fw-bold"> Sub Region: </span>
-                                <span> {{country[0].subregion}} </span>
+                                <span> {{country[0]?.subregion}} </span>
                             </div>
                             <div class="py-1">
                                 <span class="fw-bold"> Capital: </span>
-                                <span> {{country[0].capital}} </span>
+                                <span> {{country[0]?.capital}} </span>
                             </div>
                         </div>
                         <div class="col-12 col-xl-6">
                             <div class="py-1 m-xl-0 mt-5">
                                 <span class="fw-bold"> Top Level Domain: </span>
-                                <span> {{country[0].topLevelDomain}} </span>
+                                <span> {{country[0]?.topLevelDomain}} </span>
                             </div>
                             <div class="py-1">
                                 <span class="fw-bold"> Currencies: </span>
-                                <span *ngFor="let data of country[0].currencies"> {{data.name}}</span>
+                                <span *ngFor="let data of country[0]?.currencies"> {{data.name}}</span>
                             </div>
                             <div class="py-1">
                                 <span class="fw-bold"> Languages: </span>
-                                <span *ngFor="let data of country[0].languages"> {{data.name}},</span>
+                                <span *ngFor="let data of country[0]?.languages"> {{data.name}},</span>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,8 @@
                     <!-- Border Countries  -->
                     <div class="pt-5">
                         <span class="fw-bold w-100"> Border Countries: </span>
-                        <span *ngFor="let data of country[0].borders" class="back-btn py-1 px-3"> {{data}} </span>
+                        <span *ngFor="let data of country[0]?.borders" class="py-1 px-3 m-2" [ngClass]="toggleMode ? 'header-dark text-white shadow' : 'bg-white back-btn'"> {{data}} </span>
+                        <span class="text-muted" *ngIf="country[0]?.borders.length === 0"> No Border Countries </span>
                     </div>
                 </div>
             </div>

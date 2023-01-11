@@ -1,16 +1,26 @@
 // Global styles goes here
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: $font-family;
 }
 
-html,body{
+html,
+body {
     height: 100%;
     overflow: hidden;
 }
 
 select {
     border: none;
+}
+
+input{
+    border: none;
+    background: transparent;
+
+    &:focus{
+        outline: none;
+    }
 }

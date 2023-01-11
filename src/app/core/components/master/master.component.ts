@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetDataService } from 'src/app/country/get-data.service';
 
 @Component({
   selector: 'app-master',
@@ -6,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterComponent implements OnInit {
 
-  constructor() { }
+  public toggleDark:boolean;
 
+  constructor(
+    private _service:GetDataService
+  ) {
+    this.toggleDark = false 
+  }
+  
   ngOnInit(): void {
+    this._service.darkMode.subscribe((data) => this.toggleDark = data)
   }
 
 }
