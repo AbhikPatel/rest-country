@@ -14,9 +14,9 @@ export class GetDataService {
   constructor(
     private _http: HttpClient
   ) {
-    this.api = environment.baseURL;
-    this.getCountryName = '';
-    this.darkMode = new BehaviorSubject(false);
+    this.api = 'https://restcountries.com/v2';
+    this.getCountryName = ''
+    this.darkMode = new BehaviorSubject(false)
   }
 
   public getCountries(): Observable<any> {
